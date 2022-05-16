@@ -10,7 +10,7 @@ terraform {
     organization = "Siemens_ratkin"
 
     workspaces {
-      name = "sandbox-tf-snowflake"
+      name = "snowflake-terraform-demo"
     }
   }
 }
@@ -18,13 +18,22 @@ terraform {
 provider "snowflake" {
 }
 
-resource "snowflake_database" "dev_demo_db" {
-  name    = "DEV_DEMO_DB_v2"
+resource "snowflake_database" "raw" {
+  name    = "RAW"
+  comment = "Database for Snowflake Terraform demo"
+}
+resource "snowflake_database" "analytics" {
+  name    = "ANALYTICS"
   comment = "Database for Snowflake Terraform demo"
 }
 
-resource "snowflake_schema" "dev_demo_schema" {
-  database = snowflake_database.dev_demo_db_v2.name
-  name     = "DEMO_SCHEMA"
+resource "snowflake_schema" "jaffle_shop_schema" {
+  database = snowflake_database.raw.name
+  name     = "JAFFLE_SHOP"
+  comment  = "Schema for Snowflake Terraform demo"
+}
+resource "snowflake_schema" "stripe_schema" {
+  database = snowflake_database.raw.name
+  name     = "STRIPE"
   comment  = "Schema for Snowflake Terraform demo"
 }
