@@ -10,7 +10,7 @@ terraform {
     organization = "Siemens_ratkin"
 
     workspaces {
-      name = "snowflake-terraform-demo"
+      name = "snowflake-terraform-demo-dbt"
     }
   }
 }
