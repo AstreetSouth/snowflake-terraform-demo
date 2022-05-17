@@ -37,3 +37,8 @@ resource "snowflake_schema" "stripe_schema" {
   name     = "STRIPE"
   comment  = "Schema for Snowflake Terraform demo"
 }
+resource "snowflake_schema" "test_schema" {
+  database = snowflake_database.raw.name
+  name     = "TEST"
+  comment  = "Schema for Snowflake Terraform demo"
+}
